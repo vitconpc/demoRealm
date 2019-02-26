@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">RealmPractice</string>
+    <string name="sale_manager_title">Quản lý bán hàng</string>
+    <string name="add_category">Thêm loại sản phẩm</string>
+</resources>
