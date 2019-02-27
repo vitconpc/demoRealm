@@ -6,7 +6,62 @@
     android:layout_height="match_parent"
     tools:context=".view.add_product.AddProductActivity">
     <TextView
-        android:text="AddProductActivity"
+        android:id="@+id/title_screen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:gravity="center_horizontal"
+        android:padding="10dp"
+        android:text="Add Product"
+        android:textColor="#0040FF"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+    <EditText
+        android:id="@+id/text_product_name"
+        android:hint="Enter name"
+        android:layout_marginHorizontal="10dp"
+        android:layout_below="@+id/title_screen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/text_product_number"
+        android:hint="Enter number"
+        android:layout_marginHorizontal="10dp"
+        android:layout_below="@+id/text_product_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/text_product_price"
+        android:hint="Enter price"
+        android:layout_marginHorizontal="10dp"
+        android:layout_below="@+id/text_product_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/text_description"
+        android:hint="Enter description"
+        android:layout_marginHorizontal="10dp"
+        android:layout_below="@+id/text_product_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Spinner
+        android:layout_margin="10dp"
+        android:layout_below="@+id/text_description"
+        android:id="@+id/sp_category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:text="add product"
+        android:id="@+id/btn_add_product"
+        android:layout_marginTop="10dp"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/sp_category"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/text_products"
+        android:layout_below="@id/btn_add_product"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </RelativeLayout>

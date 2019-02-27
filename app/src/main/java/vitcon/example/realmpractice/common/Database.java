@@ -11,9 +11,11 @@ public class Database {
     private static Realm sRealm;
 
     public static void inItRealm(Context context) {
-        sRealm.getInstance(new RealmConfiguration.Builder().name(Constants.DATABASE_NAME).build());
         if (sRealm == null || sRealm.isClosed()) {
             sRealm.init(context);
+            sRealm = Realm.getInstance(new RealmConfiguration.Builder().name(Constants.DATABASE_NAME)
+//                    .deleteRealmIfMigrationNeeded()
+                    .build());
         }
         return;
     }
@@ -35,12 +37,7 @@ public class Database {
         });
     }
 
-    public static String getAllCategory() {
-        String s = "";
-        RealmResults<Category> realmResults = sRealm.where(Category.class).findAll();
-        for (Category category : realmResults) {
-            s += category.getId() + " : " + category.getCategoryName() + "\n";
-        }
-        return s;
+    public static RealmResults<Category> getAllCategory() {
+        return sRealm.where(Category.class).findAll();
     }
 }

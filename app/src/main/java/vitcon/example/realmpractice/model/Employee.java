@@ -2,8 +2,10 @@ package vitcon.example.realmpractice.model;
 
 import io.realm.RealmList;
 import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
 public class Employee extends RealmObject {
+    @PrimaryKey
     private int mId;
     private String mEmployeeName;
     private boolean mSex;

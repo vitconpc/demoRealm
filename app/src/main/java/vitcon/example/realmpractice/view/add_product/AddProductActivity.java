@@ -2,14 +2,74 @@ package vitcon.example.realmpractice.view.add_product;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import io.realm.RealmResults;
 import vitcon.example.realmpractice.R;
+import vitcon.example.realmpractice.common.adapter.SpinnerCategoriesAdapter;
+import vitcon.example.realmpractice.model.Category;
+import vitcon.example.realmpractice.presenter.add_product.AddProductPresenter;
+import vitcon.example.realmpractice.presenter.add_product.AddProductPresenterImpl;
 
-public class AddProductActivity extends AppCompatActivity {
+public class AddProductActivity extends AppCompatActivity implements View.OnClickListener, AddProductView {
+
+    private EditText mTextProductName;
+    private EditText mTextNumber;
+    private EditText mTextPrice;
+    private EditText mTextDescription;
+    private Spinner mSpinnerCategories;
+    private SpinnerCategoriesAdapter mSpinnerCategoriesAdapter;
+    private List<Category> mCategories;
+    private TextView mTextProducts;
+
+    private AddProductPresenter mPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_product);
+        ititViewAndData();
+    }
+
+    private void ititViewAndData() {
+        mTextDescription = findViewById(R.id.text_description);
+        mTextProductName = findViewById(R.id.text_product_name);
+        mTextNumber = findViewById(R.id.text_product_number);
+        mTextPrice = findViewById(R.id.text_product_price);
+        mSpinnerCategories = findViewById(R.id.sp_category);
+        mTextProducts = findViewById(R.id.text_products);
+        mCategories = new ArrayList<>();
+        mSpinnerCategoriesAdapter = new SpinnerCategoriesAdapter(mCategories, this);
+        mSpinnerCategories.setAdapter(mSpinnerCategoriesAdapter);
+        findViewById(R.id.btn_add_product).setOnClickListener(this);
+        mPresenter = new AddProductPresenterImpl(this,this);
+        loadData();
+
+    }
+
+    private void loadData() {
+        mPresenter.loadCategorry();
+    }
+
+    @Override
+    public void onClick(View v) {
+        mPresenter.addProduct(mTextProductName.getText().toString().trim(), mTextNumber.getText().toString().trim(), mTextPrice.getText().toString().trim()
+                , mTextDescription.getText().toString().trim(), (Category) mSpinnerCategories.getSelectedItem());
+
+        Log.d("vitcon", "onClick: ");
+    }
+
+    @Override
+    public void setSpinnerCategories(RealmResults<Category> categories) {
+        mCategories.clear();
+        mCategories.addAll(categories);
+        mSpinnerCategoriesAdapter.notifyDataSetChanged();
     }
 }

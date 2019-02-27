@@ -2,8 +2,10 @@ package vitcon.example.realmpractice.model;
 
 import io.realm.RealmList;
 import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
 public class Category extends RealmObject {
+    @PrimaryKey
     private int mId;
     private String mCategoryName;
     private RealmList<Product> mProducts;
