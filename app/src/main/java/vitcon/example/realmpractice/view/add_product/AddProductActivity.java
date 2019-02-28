@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,14 +57,13 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
 
     private void loadData() {
         mPresenter.loadCategorry();
+        mPresenter.loadProducts();
     }
 
     @Override
     public void onClick(View v) {
         mPresenter.addProduct(mTextProductName.getText().toString().trim(), mTextNumber.getText().toString().trim(), mTextPrice.getText().toString().trim()
                 , mTextDescription.getText().toString().trim(), (Category) mSpinnerCategories.getSelectedItem());
-
-        Log.d("vitcon", "onClick: ");
     }
 
     @Override
@@ -71,5 +71,15 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
         mCategories.clear();
         mCategories.addAll(categories);
         mSpinnerCategoriesAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void showError(String empty_enter_product_name) {
+        Toast.makeText(this, empty_enter_product_name, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void setResult(String s) {
+        mTextProducts.setText(s);
     }
 }

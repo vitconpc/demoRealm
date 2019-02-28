@@ -7,7 +7,75 @@
     tools:context=".view.add_employee.AddEmployeeActivity">
 
     <TextView
-        android:text="AddEmployeeActivity"
+        android:id="@+id/title_screen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:gravity="center_horizontal"
+        android:padding="10dp"
+        android:text="Add Employee"
+        android:textColor="#0040FF"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/text_employee_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title_screen"
+        android:layout_marginHorizontal="10dp"
+        android:hint="Enter name" />
+
+    <EditText
+        android:id="@+id/text_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_employee_name"
+        android:layout_marginHorizontal="10dp"
+        android:hint="Enter Address" />
+
+    <EditText
+        android:id="@+id/text_number_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_address"
+        android:layout_marginHorizontal="10dp"
+        android:hint="Enter Number Phone" />
+
+    <RadioGroup
+        android:id="@+id/rg_sex"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_number_phone"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <RadioButton
+            android:id="@+id/rb_male"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Male" />
+
+        <RadioButton
+            android:id="@+id/rb_female"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Female" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btn_add_employee"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rg_sex"
+        android:layout_centerInParent="true"
+        android:text="Add Employee" />
+
+    <TextView
+        android:id="@+id/text_employees"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/btn_add_employee" />
 </RelativeLayout>

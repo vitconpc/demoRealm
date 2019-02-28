@@ -43,5 +43,9 @@ public class Category extends RealmObject {
     public void setProducts(RealmList<Product> products) {
         mProducts = products;
     }
+
+    public void addProduct(Product product) {
+        mProducts.add(product);
+    }
 }
 
